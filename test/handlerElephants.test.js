@@ -19,7 +19,7 @@ describe('Testes da função HandlerElephants', () => {
   });
 
   it('retorna ["Ilana", "Orval", "Bea", "Jefferson"] se o parâmetro for names', () => {
-    const expected = ["Ilana", "Orval", "Bea", "Jefferson"];
+    const expected = ['Ilana', 'Orval', 'Bea', 'Jefferson'];
     const actual = 'names';
     expect(handlerElephants(actual)).toEqual(expected);
   });
