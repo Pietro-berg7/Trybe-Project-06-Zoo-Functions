@@ -1,5 +1,8 @@
 const getOpeningHours = require('../src/getOpeningHours');
 
+const open = 'The zoo is open';
+const closed = 'The zoo is closed';
+
 describe('Testes da função getOpeningHours', () => {
   it('retorna true se o argumento passado estiver em inglês', () => {
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -8,68 +11,55 @@ describe('Testes da função getOpeningHours', () => {
   });
 
   it('retorna closed se o dia for segunda', () => {
-    const expected = 'The zoo is closed';
-    expect(getOpeningHours('monday', '8:15-am')).toEqual(expected);
+    expect(getOpeningHours('monday', '8:15-am')).toBe(closed);
   });
 
   it('retorna open se o zoológico estiver aberto na terça', () => {
-    const expected = 'The zoo is open';
-    expect(getOpeningHours('tuesday', '11:15-am')).toEqual(expected);
+    expect(getOpeningHours('tuesday', '11:15-am')).toBe(open);
   });
 
   it('retorna closed se o zoológico estiver fechado na terça', () => {
-    const expected = 'The zoo is closed';
-    expect(getOpeningHours('tuesday', '5:15-am')).toEqual(expected);
+    expect(getOpeningHours('tuesday', '5:15-am')).toBe(closed);
   });
 
   it('retorna open se o zoológico estiver aberto na quarta', () => {
-    const expected = 'The zoo is open';
-    expect(getOpeningHours('wednesday', '11:15-am')).toEqual(expected);
+    expect(getOpeningHours('wednesday', '11:15-am')).toBe(open);
   });
 
   it('retorna closed se o zoológico estiver fechado na quarta', () => {
-    const expected = 'The zoo is closed';
-    expect(getOpeningHours('wednesday', '5:15-am')).toEqual(expected);
+    expect(getOpeningHours('wednesday', '5:15-am')).toBe(closed);
   });
 
   it('retorna open se o zoológico estiver aberto na quinta', () => {
-    const expected = 'The zoo is open';
-    expect(getOpeningHours('thursday', '11:15-am')).toEqual(expected);
+    expect(getOpeningHours('thursday', '11:15-am')).toBe(open);
   });
 
   it('retorna closed se o zoológico estiver fechado na quinta', () => {
-    const expected = 'The zoo is closed';
-    expect(getOpeningHours('thursday', '5:15-am')).toEqual(expected);
+    expect(getOpeningHours('thursday', '5:15-am')).toBe(closed);
   });
 
   it('retorna open se o zoológico estiver aberto na sexta', () => {
-    const expected = 'The zoo is open';
-    expect(getOpeningHours('friday', '11:15-am')).toEqual(expected);
+    expect(getOpeningHours('friday', '11:15-am')).toBe(open);
   });
 
   it('retorna closed se o zoológico estiver fechado na sexta', () => {
-    const expected = 'The zoo is closed';
-    expect(getOpeningHours('friday', '5:15-am')).toEqual(expected);
+    expect(getOpeningHours('friday', '5:15-am')).toBe(closed);
   });
 
   it('retorna open se o zoológico estiver aberto no sábado', () => {
-    const expected = 'The zoo is open';
-    expect(getOpeningHours('saturday', '11:15-am')).toEqual(expected);
+    expect(getOpeningHours('saturday', '11:15-am')).toBe(open);
   });
 
   it('retorna closed se o zoológico estiver fechado no sábado', () => {
-    const expected = 'The zoo is closed';
-    expect(getOpeningHours('saturday', '5:15-am')).toEqual(expected);
+    expect(getOpeningHours('saturday', '5:15-am')).toBe(closed);
   });
 
   it('retorna open se o zoológico estiver aberto no domingo', () => {
-    const expected = 'The zoo is open';
-    expect(getOpeningHours('sunday', '11:15-am')).toEqual(expected);
+    expect(getOpeningHours('sunday', '11:15-am')).toBe(open);
   });
 
   it('retorna closed se o zoológico estiver fechado no domingo', () => {
-    const expected = 'The zoo is closed';
-    expect(getOpeningHours('sunday', '5:15-am')).toEqual(expected);
+    expect(getOpeningHours('sunday', '5:15-am')).toBe(closed);
   });
 
   it('retorna data.hours se nenhum argumento for passado', () => {
@@ -82,7 +72,7 @@ describe('Testes da função getOpeningHours', () => {
       Sunday: { open: 8, close: 8 },
       Monday: { open: 0, close: 0 },
     };
-    expect(getOpeningHours()).toEqual(expected)
+    expect(getOpeningHours()).toEqual(expected);
   });
 
   it('retorna erro se o argumento day for inválido', () => {
@@ -90,11 +80,11 @@ describe('Testes da função getOpeningHours', () => {
   });
 
   it('retorna erro se o argumento dataHour tiver a hora inválida', () => {
-    expect(() => getOpeningHours('Friday', 'teste:15-AM')).toThrow(`The hour should represent a number`);
+    expect(() => getOpeningHours('Friday', 'teste:15-AM')).toThrow('The hour should represent a number');
   });
 
   it('retorna erro se o argumento dataHour tiver os minutos inválidos', () => {
-    expect(() => getOpeningHours('Friday', '11:teste-AM')).toThrow(`The minutes should represent a number`);
+    expect(() => getOpeningHours('Friday', '11:teste-AM')).toThrow('The minutes should represent a number');
   });
 
   it('retorna erro se o argumento dataHour tiver a abreviação inválida', () => {
