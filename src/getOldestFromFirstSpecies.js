@@ -8,8 +8,7 @@ function getOldestFromFirstSpecies(id) {
     .find((element) => element.id === animal)
     .residents.map((element) => element)
     .reduce((element, element2) =>
-      element.age > element2.age ? element : element2
-    );
+      (element.age > element2.age ? element : element2));
   return [oldest.name, oldest.sex, oldest.age];
 }
 
